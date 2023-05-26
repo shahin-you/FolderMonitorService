@@ -1,9 +1,19 @@
 #include <iostream>
 #include <format>
 
-using namespace std;
+#include "FMS.h"
 
 int main() {
+    SERVICE_TABLE_ENTRY ServiceTable[] =
+    {
+        {FMS_SERVICE_NAME, (LPSERVICE_MAIN_FUNCTION)ServiceMain},
+        {NULL, NULL}
+    };
 
-	return 0;
+    if (StartServiceCtrlDispatcher(ServiceTable) == FALSE)
+    {
+        return GetLastError();
+    }
+
+    return 0;
 }
