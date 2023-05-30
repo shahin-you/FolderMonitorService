@@ -11,9 +11,7 @@ int main() {
     };
 
     if (StartServiceCtrlDispatcher(ServiceTable) == FALSE)
-    {
         return GetLastError();
-    }
 
     return 0;
 }
